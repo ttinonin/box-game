@@ -5,7 +5,7 @@ class Game:
     def __init__(self):
         pygame.init()
 
-        pygame.display.set_mode((1280, 720))
+        self.display_surface = pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Game")
 
         self.clock = pygame.time.Clock()
