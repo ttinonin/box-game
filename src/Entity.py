@@ -4,7 +4,7 @@ class Entity(pygame.sprite.Sprite):
     def __init__(self, pos, img_path: str, speed: int, groups):
         super().__init__(groups)
 
-        self.image = pygame.image.load(img_path)
+        self.image = pygame.image.load(img_path).convert_alpha()
         self.rect = self.image.get_rect(center = pos)
 
         self.mask = pygame.mask.from_surface(self.image)
