@@ -2,9 +2,17 @@ import pygame
 from Entity import Entity
 
 class Player(Entity):
-    def __init__(self, pos, groups):
+    def __init__(self, pos, groups, box_group):
         super().__init__(pos, "resources/player/placeholder.png", 300, groups)
 
+        self.boxes = box_group
+
+    def box_colision(self):
+        for sprite in self.boxes:
+            if sprite.rect.colliderect(self.rect):
+               sprite.direction = self.direction
+            else:
+                sprite.direction = pygame.math.Vector2(0,0)
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -32,3 +40,4 @@ class Player(Entity):
     def update(self, deltaTime):
         self.input()
         self.move(deltaTime)
+        self.box_colision()

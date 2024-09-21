@@ -32,7 +32,6 @@ class Game:
 
             self.screen.fill('white')
 
-            # self.screens[self.gameState.getScreen()].run(deltaTime)
             self.screens[self.gameState.getScreen()].run(deltaTime)
 
             pygame.display.update()

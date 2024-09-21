@@ -3,16 +3,15 @@ import pygame
 from Entity import Entity
 
 class Box(Entity):
-    def __init__(self, pos, groups, player):
+    def __init__(self, pos, groups, boxes):
         super().__init__(pos, "resources/wood-box.png", 400, groups)
 
-        self.player = player
+        self.boxes = boxes
 
-    def colideWithPLayer(self):
-        if self.rect.colliderect(self.player.rect):
-            self.direction = self.player.direction
-        else:
-            self.direction = pygame.math.Vector2(0, 0)
+    def colision(self):
+        for sprite in self.boxes:
+            if sprite.rect.colliderect(self.rect):
+                print(sprite)
 
     def move(self, deltaTime):
         if self.direction.magnitude() != 0:
@@ -21,5 +20,5 @@ class Box(Entity):
         self.rect.center += self.direction * self.speed * deltaTime
 
     def update(self, deltaTime):
-        self.colideWithPLayer()
+        self.colision()
         self.move(deltaTime)
