@@ -2,7 +2,7 @@ import pygame
 
 from Entity import Entity
 
-class Box(Entity):
+class WalkingBox(Entity):
     def __init__(self, pos, groups, obstacles):
         super().__init__(pos, "resources/wood-box.png", 300, groups, obstacles)
 

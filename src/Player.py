@@ -1,18 +1,15 @@
 import pygame
 from Entity import Entity
 
+from Box import Box
+from WalkingBox import WalkingBox
+
 class Player(Entity):
-    def __init__(self, pos, groups, box_group):
-        super().__init__(pos, "resources/player/placeholder.png", 300, groups)
+    def __init__(self, pos, groups, obstacles):
+        super().__init__(pos, "resources/player/placeholder.png", 300, groups, obstacles)
 
-        self.boxes = box_group
-
-    def box_colision(self):
-        for sprite in self.boxes:
-            if sprite.rect.colliderect(self.rect):
-               sprite.direction = self.direction
-            else:
-                sprite.direction = pygame.math.Vector2(0,0)
+     #   self.rect = self.rect.inflate(0, -10)
+        self.isHoldingBox = False
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -35,9 +32,44 @@ class Player(Entity):
         if self.direction.magnitude() != 0:
             self.direction = self.direction.normalize()
 
-        self.rect.center += self.direction * self.speed * deltaTime
+        self.rect.x += self.direction.x * self.speed * deltaTime
+        self.colision('horizontal')
+        self.rect.y += self.direction.y * self.speed * deltaTime
+        self.colision('vertical')
+    
+    def colision(self, direction = 'horizontal'):
+        if direction == 'horizontal':
+            for sprite in self.obstacles:
+                if sprite.rect.colliderect(self.rect):
+                    if isinstance(sprite, Box):
+                        sprite.direction.x = self.direction.x
+                    if isinstance(sprite, WalkingBox):
+                        sprite.direction.x = self.direction.x
+
+                    if self.direction.x > 0: # moving rightself
+                        self.rect.right = sprite.rect.left
+                    if self.direction.x < 0: # moving leftself
+                        self.rect.left = sprite.rect.right
+                else:
+                    if isinstance(sprite, Box):
+                       sprite.direction.x = 0
+
+        if direction == 'vertical':
+            for sprite in self.obstacles:
+                if sprite.rect.colliderect(self.rect):
+                    if isinstance(sprite, Box):
+                        sprite.direction.y = self.direction.y
+                    if isinstance(sprite, WalkingBox):
+                        sprite.direction.y = self.direction.y
+
+                    if self.direction.y > 0: # moving rightself
+                        self.rect.bottom = sprite.rect.top
+                    if self.direction.y < 0: # moving leftself
+                        self.rect.top = sprite.rect.bottom
+                else:
+                    if isinstance(sprite, Box):
+                        sprite.direction.y = 0
 
     def update(self, deltaTime):
         self.input()
         self.move(deltaTime)
-        self.box_colision()

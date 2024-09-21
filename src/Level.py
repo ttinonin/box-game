@@ -2,6 +2,7 @@ import pygame
 
 from Player import Player
 from Box import Box
+from WalkingBox import WalkingBox
 
 class Level:
     def __init__(self, gameState):
@@ -11,13 +12,16 @@ class Level:
 
         self.visible_sprites = pygame.sprite.Group()
         self.obstacle_sprites = pygame.sprite.Group()
-        self.boxes = pygame.sprite.Group()
 
         self.create_map()
 
     def create_map(self):
-        self.player = Player((200, 300), [self.visible_sprites], self.boxes)
-        Box((500, 500), [self.visible_sprites, self.boxes], self.boxes)
+        self.player = Player((200, 300), [self.visible_sprites], self.obstacle_sprites)
+        Box((500, 500), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
+        Box((300, 500), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
+        Box((500, 700), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
+        Box((600, 500), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
+        WalkingBox((300, 300), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
 
     def run(self, deltaTime):
         self.visible_sprites.draw(self.display_surface)
