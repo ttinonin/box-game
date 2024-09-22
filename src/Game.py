@@ -19,18 +19,24 @@ class Game:
         self.menu = Menu(self.gameState)
         self.level = Level(self.gameState)
 
-        self.screens = {'menu': self.menu, 'level': self.level}
+        self.screens = {'menu': self.menu, 'level': self.level, 'quit': self.quit}
+
+    def quit(self):
+        pygame.quit()
+        sys.exit()
 
     def run(self):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+                   self.quit()
 
             deltaTime = self.clock.tick(self.FPS) / 1000
 
-            self.screen.fill('white')
+            self.screen.fill('black')
+
+            if self.gameState.getScreen() == "quit":
+                self.quit()
 
             self.screens[self.gameState.getScreen()].run(deltaTime)
 
