@@ -1,10 +1,14 @@
 import pygame
 
+from Animation import Animation
+
 class Entity(pygame.sprite.Sprite):
-    def __init__(self, pos, img_path: str, speed: int, groups, obstacles):
+    def __init__(self, pos, sprite_name: str, speed: int, groups, obstacles):
         super().__init__(groups)
 
-        self.image = pygame.image.load(img_path).convert_alpha()
+        self.animation = Animation(sprite_name)
+
+        self.image = self.animation.animations[self.animation.status][self.animation.frame_index]
         self.rect = self.image.get_rect(topleft = pos)
 
         self.mask = pygame.mask.from_surface(self.image)

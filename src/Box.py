@@ -4,7 +4,7 @@ from Entity import Entity
 
 class Box(Entity):
     def __init__(self, pos, groups, obstacles):
-        super().__init__(pos, "resources/wood-box.png", 300, groups, obstacles)
+        super().__init__(pos, "box", 300, groups, obstacles)
 
     def move(self, deltaTime):
         if self.direction.magnitude() != 0:

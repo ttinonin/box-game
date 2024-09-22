@@ -4,26 +4,43 @@ from Entity import Entity
 from Box import Box
 from WalkingBox import WalkingBox
 
+
 class Player(Entity):
     def __init__(self, pos, groups, obstacles):
-        super().__init__(pos, "resources/player/placeholder.png", 300, groups, obstacles)
+        super().__init__(pos, "player", 300, groups, obstacles)
 
      #   self.rect = self.rect.inflate(0, -10)
         self.isHoldingBox = False
+
+    def animate(self, deltaTime):
+        self.animation.frame_index += 4 * deltaTime
+
+        if self.animation.frame_index >= len(self.animation.animations[self.animation.status]):
+            self.animation.frame_index = 0
+
+        self.image = self.animation.animations[self.animation.status][int(self.animation.frame_index)]
+
+    def getAnimationStatus(self):
+        if self.direction.magnitude() == 0:
+            self.animation.status = self.animation.status.split('_')[0] + '_idle'
 
     def input(self):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_w]:
+            self.animation.status = "up"
             self.direction.y = -1
         elif keys[pygame.K_s]:
+            self.animation.status = "down"
             self.direction.y = 1
         else:
             self.direction.y = 0
 
         if keys[pygame.K_a]:
+            self.animation.status = "left"
             self.direction.x = -1
         elif keys[pygame.K_d]:
+            self.animation.status = "right"
             self.direction.x = 1
         else:
             self.direction.x = 0
@@ -73,3 +90,5 @@ class Player(Entity):
     def update(self, deltaTime):
         self.input()
         self.move(deltaTime)
+        self.getAnimationStatus()
+        self.animate(deltaTime)
