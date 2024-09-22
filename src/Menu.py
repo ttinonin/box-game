@@ -29,6 +29,8 @@ class Menu:
     def run(self, deltaTime):
         self.display_surface.blit(self.bg_image, (0,0))
 
+        self.menu_label.move()
+
         self.visible_sprites.draw(self.display_surface)
 
         self.visible_sprites.update()

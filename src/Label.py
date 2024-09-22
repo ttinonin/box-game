@@ -19,5 +19,5 @@ class Label(pygame.sprite.Sprite):
 
         self.rect.center = (self.pos.x, self.pos.y)
 
-    def update(self):
-        self.move()
+    def update(self, deltaTime = 1):
+        pass

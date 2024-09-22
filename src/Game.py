@@ -10,7 +10,7 @@ class Game:
         pygame.init()
 
         self.screen = pygame.display.set_mode((1280, 720), vsync=0)
-        pygame.display.set_caption("Game")
+        pygame.display.set_caption("Daniel's Path")
 
         self.clock = pygame.time.Clock()
         self.FPS = 60
