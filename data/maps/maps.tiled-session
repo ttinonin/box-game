@@ -1,0 +1,50 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map01.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "corners.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "floor.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map01.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 474.66666666666663,
+                "y": 395.99999999999994
+            }
+        }
+    },
+    "last.imagePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/tiles",
+    "map.height": 15,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 48,
+    "map.tileWidth": 48,
+    "map.width": 26,
+    "openFiles": [
+        "map01.tmx",
+        "floor.tsx",
+        "corners.tsx"
+    ],
+    "project": "maps.tiled-project",
+    "recentFiles": [
+        "corners.tsx",
+        "floor.tsx",
+        "map01.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 48,
+        "width": 48
+    }
+}

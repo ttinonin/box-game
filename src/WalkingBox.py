@@ -21,12 +21,15 @@ class WalkingBox(Entity):
             for sprite in self.obstacles:
                 if sprite == self:
                     continue
+
                 if sprite.rect.colliderect(self.rect):
                     if self.direction.x > 0: # moving rightself
                         self.rect.right = sprite.rect.left
                     if self.direction.x < 0: # moving leftself
                         self.rect.left = sprite.rect.right
         
+                    self.direction.x = 0
+
         if direction == 'vertical':
             for sprite in self.obstacles:
                 if sprite == self:
@@ -36,6 +39,8 @@ class WalkingBox(Entity):
                         self.rect.bottom = sprite.rect.top
                     if self.direction.y < 0:
                         self.rect.top = sprite.rect.bottom
+
+                    self.direction.y = 0
 
     def update(self, deltaTime):
         self.move(deltaTime)

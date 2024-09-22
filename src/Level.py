@@ -10,6 +10,8 @@ class Level:
 
         self.gameState = gameState
 
+        self.background = pygame.image.load("resources/map-test.png").convert()
+
         self.visible_sprites = pygame.sprite.Group()
         self.obstacle_sprites = pygame.sprite.Group()
 
@@ -24,6 +26,8 @@ class Level:
         WalkingBox((300, 300), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
 
     def run(self, deltaTime):
+        self.display_surface.blit(self.background, (0,0))
+
         self.visible_sprites.draw(self.display_surface)
 
         self.visible_sprites.update(deltaTime)
