@@ -5,6 +5,7 @@ from Box import Box
 from Label import Label
 from Tile import Tile
 from Text import Text
+from Door import Door
 
 from utils import import_csv, import_folder
 
@@ -31,36 +32,44 @@ class Level:
         self.display_surface.blit(text.text, text.rect.center)
     
     def create_map(self):
-        layout = {
-            'floor': import_csv(f"levels/{self.gameState.current_level}/floor.csv"),
-            'walls': import_csv(f"levels/{self.gameState.current_level}/walls.csv"),
-            "boxes": import_csv(f"levels/{self.gameState.current_level}/boxes.csv")
-        }
+        try:
+            layout = {
+                'floor': import_csv(f"levels/{self.gameState.current_level}/floor.csv"),
+                'walls': import_csv(f"levels/{self.gameState.current_level}/walls.csv"),
+                "boxes": import_csv(f"levels/{self.gameState.current_level}/boxes.csv"),
+                "door": import_csv(f"levels/{self.gameState.current_level}/door.csv")
+            }
 
-        graphivs = {
-            'corners': import_folder("resources/tiles/corners")
-        }
+            graphivs = {
+                'corners': import_folder("resources/tiles/corners")
+            }
 
-        for style, layout in layout.items():
-            for row_index, row in enumerate(layout):
-                for col_index, col in enumerate(row):
-                    if col == "-1":
-                        continue
-                    
-                    x = col_index * 48
-                    y = row_index * 48
+            for style, layout in layout.items():
+                for row_index, row in enumerate(layout):
+                    for col_index, col in enumerate(row):
+                        if col == "-1":
+                            continue
+                        
+                        x = col_index * 48
+                        y = row_index * 48
 
-                    if style == "floor":
-                        Tile((x,y), [self.visible_sprites], "floor", pygame.image.load("resources/tiles/floor.png").convert())
-                    if style == "walls":
-                        if col == "0":
-                            Tile((x, y), [self.visible_sprites, self.obstacle_sprites], "walls", pygame.image.load("resources/tiles/wall-48.png").convert())
-                        else:
-                            Tile((x, y), [self.visible_sprites, self.obstacle_sprites], "corner", graphivs["corners"][int(col)])
-                    if style == "boxes":
-                        Box((x, y), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
+                        if style == "floor":
+                            Tile((x,y), [self.visible_sprites], "floor", pygame.image.load("resources/tiles/floor.png").convert())
+                        if style == "walls":
+                            if col == "0":
+                                Tile((x, y), [self.visible_sprites, self.obstacle_sprites], "walls", pygame.image.load("resources/tiles/wall-48.png").convert())
+                            else:
+                                Tile((x, y), [self.visible_sprites, self.obstacle_sprites], "corner", graphivs["corners"][int(col)])
+                        if style == "boxes":
+                            Box((x, y), [self.visible_sprites, self.obstacle_sprites], self.obstacle_sprites)
+                        if style == "door":
+                            self.door = Door([self.visible_sprites, self.obstacle_sprites], (x, y))
 
-        self.player = Player((200, 300), [self.visible_sprites], self.obstacle_sprites)
+            self.player = Player((200, 400), [self.visible_sprites], self.obstacle_sprites, self.door, self.gameState)
+
+        except FileNotFoundError:
+            # End of avaliable levels
+            self.gameState.setScreen("menu")
 
     def run(self, deltaTime):
         self.blit_hud()

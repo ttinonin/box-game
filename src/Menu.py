@@ -22,11 +22,8 @@ class Menu:
         self.start_btn.onClick = self.quitGame
 
     def startGame(self):
-        self.level = Level(self.gameState)
-
-        self.gameState.createScreen("level", self.level)
-
-        self.gameState.setScreen("level") 
+        self.gameState.initGame()
+        self.gameState.setScreen("level")
 
     def quitGame(self):
         self.gameState.setScreen("quit")

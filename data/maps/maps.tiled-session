@@ -3,12 +3,20 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map01.tmx",
+    "activeFile": "map00.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "box.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "corners.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "door.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -17,19 +25,19 @@
             "scaleInEditor": 1
         },
         "map00.tmx": {
-            "scale": 0.5,
+            "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 608,
-                "y": 366
+                "x": 783,
+                "y": 201
             }
         },
         "map01.tmx": {
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 497.33333333333337,
-                "y": 335.99999999999994
+                "x": 494.66666666666663,
+                "y": 333.33333333333337
             }
         },
         "walls.tsx": {
@@ -37,8 +45,8 @@
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/ui/csv",
-    "last.imagePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/box/down_idle",
+    "last.exportedFilePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/ui/csv/levels/1",
+    "last.imagePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/tiles",
     "map.height": 13,
     "map.lastUsedExportFilter": "Ficheiros CSV (*.csv)",
     "map.lastUsedFormat": "tmx",
@@ -48,15 +56,19 @@
     "openFiles": [
         "map01.tmx",
         "floor.tsx",
-        "corners.tsx",
-        "walls.tsx"
+        "map00.tmx",
+        "box.tsx",
+        "door.tsx"
     ],
     "project": "maps.tiled-project",
     "recentFiles": [
-        "corners.tsx",
-        "walls.tsx",
+        "map01.tmx",
         "floor.tsx",
-        "map01.tmx"
+        "door.tsx",
+        "box.tsx",
+        "map00.tmx",
+        "corners.tsx",
+        "walls.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

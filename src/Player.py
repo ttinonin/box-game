@@ -1,14 +1,18 @@
 import pygame
 from Entity import Entity
+import math
 
+from Door import Door
 from Box import Box
 
 class Player(Entity):
-    def __init__(self, pos, groups, obstacles):
+    def __init__(self, pos, groups, obstacles, door, gameState):
         super().__init__(pos, "player", 300, groups, obstacles)
 
      #   self.rect = self.rect.inflate(0, -10)
         self.isHoldingBox = False
+        self.door = door
+        self.gameState = gameState
 
     def animate(self, deltaTime):
         self.animation.frame_index += 4 * deltaTime
@@ -81,8 +85,18 @@ class Player(Entity):
                     if isinstance(sprite, Box):
                         sprite.direction.y = 0
 
+    def distanceToDoor(self):
+        op1 = (self.door.rect.x - self.rect.x)**2
+        op2 = (self.door.rect.y - self.rect.y)**2
+
+        res = math.sqrt(op1 + op2)
+
+        if res < 51:
+            self.gameState.nextLevel()
+
     def update(self, deltaTime):
         self.input()
         self.move(deltaTime)
+        self.distanceToDoor()
         self.getAnimationStatus()
         self.animate(deltaTime)
