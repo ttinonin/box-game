@@ -2,8 +2,6 @@ import pygame
 from Entity import Entity
 
 from Box import Box
-from WalkingBox import WalkingBox
-
 
 class Player(Entity):
     def __init__(self, pos, groups, obstacles):
@@ -60,8 +58,6 @@ class Player(Entity):
                 if sprite.rect.colliderect(self.rect):
                     if isinstance(sprite, Box):
                         sprite.direction.x = self.direction.x
-                    if isinstance(sprite, WalkingBox):
-                        sprite.direction.x = self.direction.x
 
                     if self.direction.x > 0: # moving rightself
                         self.rect.right = sprite.rect.left
@@ -75,8 +71,6 @@ class Player(Entity):
             for sprite in self.obstacles:
                 if sprite.rect.colliderect(self.rect):
                     if isinstance(sprite, Box):
-                        sprite.direction.y = self.direction.y
-                    if isinstance(sprite, WalkingBox):
                         sprite.direction.y = self.direction.y
 
                     if self.direction.y > 0: # moving rightself

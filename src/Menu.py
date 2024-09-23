@@ -2,6 +2,7 @@ import pygame
 
 from Button import Button
 from Label import Label
+from Level import Level
 
 class Menu:
     def __init__(self, gameState):
@@ -21,6 +22,10 @@ class Menu:
         self.start_btn.onClick = self.quitGame
 
     def startGame(self):
+        self.level = Level(self.gameState)
+
+        self.gameState.createScreen("level", self.level)
+
         self.gameState.setScreen("level") 
 
     def quitGame(self):

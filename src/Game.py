@@ -17,9 +17,9 @@ class Game:
 
         self.gameState = GameState()
         self.menu = Menu(self.gameState)
-        self.level = Level(self.gameState)
 
-        self.screens = {'menu': self.menu, 'level': self.level, 'quit': self.quit}
+        self.gameState.createScreen("menu", self.menu)
+        self.gameState.createScreen("quit", "")
 
     def quit(self):
         pygame.quit()
@@ -38,6 +38,6 @@ class Game:
             if self.gameState.getScreen() == "quit":
                 self.quit()
 
-            self.screens[self.gameState.getScreen()].run(deltaTime)
+            self.gameState.screens[self.gameState.getScreen()].run(deltaTime)
 
             pygame.display.update()
