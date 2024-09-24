@@ -22,6 +22,7 @@ class Menu:
         self.start_btn.onClick = self.quitGame
 
     def startGame(self):
+        self.gameState.current_level = 1
         self.gameState.initGame()
         self.gameState.setScreen("level")
 
