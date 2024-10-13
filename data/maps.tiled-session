@@ -27,26 +27,26 @@
             "scaleInDock": 1
         },
         "maps/map00.tmx": {
-            "scale": 0.27860576923076924,
-            "selectedLayer": 0,
+            "scale": 0.5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1162.9335634167383,
-                "y": 308.6798964624676
+                "x": 602,
+                "y": 530
             }
         },
         "maps/map01.tmx": {
             "scale": 0.27860576923076924,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 624.5383951682484,
-                "y": 362.5194132873165
+                "x": 617.3597929249353,
+                "y": 355.34081104400354
             }
         },
         "maps/walls.tsx": {
             "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/ui/csv/levels/3",
+    "last.exportedFilePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/ui/csv/levels/5",
     "last.imagePath": "/home/thiago/scripts/c/game/resources/data/grass",
     "map.height": 13,
     "map.lastUsedExportFilter": "Ficheiros CSV (*.csv)",
