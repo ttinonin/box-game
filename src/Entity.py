@@ -6,6 +6,8 @@ class Entity(pygame.sprite.Sprite):
     def __init__(self, pos, sprite_name: str, speed: int, groups, obstacles):
         super().__init__(groups)
 
+        self.prev_pos = pygame.math.Vector2(pos)
+
         self.animation = Animation(sprite_name)
 
         self.image = self.animation.animations[self.animation.status][self.animation.frame_index]
@@ -16,7 +18,7 @@ class Entity(pygame.sprite.Sprite):
         self.pos = pygame.math.Vector2(self.rect.center)
         self.direction = pygame.math.Vector2()
         self.speed = speed
-
+        
         self.obstacles = obstacles
         
 

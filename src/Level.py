@@ -65,15 +65,36 @@ class Level:
                         if style == "door":
                             self.door = Door([self.visible_sprites, self.obstacle_sprites], (x, y))
 
-            self.player = Player((200, 400), [self.visible_sprites], self.obstacle_sprites, self.door, self.gameState)
+            self.player = Player((50, 500), [self.visible_sprites], self.obstacle_sprites, self.door, self.gameState)
 
         except FileNotFoundError:
             # End of avaliable levels
+            # self.gameState.endGame()
             self.gameState.setScreen("menu")
+
+    def reset_level(self):
+        self.player.rect.x = 50
+        self.player.rect.y = 500
+
+        for sprite in self.obstacle_sprites:
+            if isinstance(sprite, Box):
+                sprite.rect.x = sprite.prev_pos.x
+                sprite.rect.y = sprite.prev_pos.y
+
+    def check_reset(self):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_r] or keys[pygame.K_ESCAPE]:
+            return True
+        
+        return False
 
     def run(self, deltaTime):
         self.blit_hud()
 
         self.visible_sprites.draw(self.display_surface)
+
+        if self.check_reset():
+            self.reset_level()
 
         self.visible_sprites.update(deltaTime)

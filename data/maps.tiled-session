@@ -5,23 +5,62 @@
     },
     "activeFile": "",
     "expandedProjectPaths": [
+        "maps",
+        "."
     ],
-    "file.lastUsedOpenFilter": "All Files (*)",
+    "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
     "fileStates": {
         "grass/Grass.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "maps/box.tsx": {
+            "scaleInDock": 1
+        },
+        "maps/corners.tsx": {
+            "scaleInDock": 1
+        },
+        "maps/door.tsx": {
+            "scaleInDock": 1
+        },
+        "maps/floor.tsx": {
+            "scaleInDock": 1
+        },
+        "maps/map00.tmx": {
+            "scale": 0.27860576923076924,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1162.9335634167383,
+                "y": 308.6798964624676
+            }
+        },
+        "maps/map01.tmx": {
+            "scale": 0.27860576923076924,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 624.5383951682484,
+                "y": 362.5194132873165
+            }
+        },
+        "maps/walls.tsx": {
+            "scaleInDock": 1
         }
     },
+    "last.exportedFilePath": "D:/Users/User/Desktop/scripts/python/box-game/resources/ui/csv/levels/3",
     "last.imagePath": "/home/thiago/scripts/c/game/resources/data/grass",
-    "map.height": 50,
+    "map.height": 13,
+    "map.lastUsedExportFilter": "Ficheiros CSV (*.csv)",
     "map.tileHeight": 48,
     "map.tileWidth": 48,
-    "map.width": 60,
+    "map.width": 26,
     "openFiles": [
+        "maps/map01.tmx",
+        "maps/map00.tmx"
     ],
     "project": "maps.tiled-project",
     "recentFiles": [
+        "maps/map01.tmx",
+        "maps/map00.tmx",
         "grass/Grass.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
